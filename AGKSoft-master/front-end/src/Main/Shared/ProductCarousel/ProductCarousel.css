@@ -1,0 +1,50 @@
+
+.slide-container{
+    height: 500px;
+    width: auto;
+}
+.carousel-caption {
+    top: 0;
+    bottom: auto;
+}
+
+.carousel-image {
+    padding-top: 30px;
+    max-height: 400px;
+    width: auto;
+}
+
+.caption-padding{
+    padding-top: 370px;
+    color: black;
+}
+
+@media (min-width: 0px) and (max-width: 450px) {
+    .caption-padding{
+        padding-top: 300px;
+    }
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    margin: 10px;
+    text-indent: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 100%;
+    background-color: black;
+    box-shadow: inset 4px 4px 4px 4px rgba(0,0,0,0.4);
+    list-style-type: square;
+}
+
+
+.carousel-indicators .active {
+    width: 48px;
+    height: 48px;
+    margin: 10px;
+    box-shadow: inset 4px 4px 4px 4px rgba(0,0,0,0.9);
+    background-color: #000000;
+}
+

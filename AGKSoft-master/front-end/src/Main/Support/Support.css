@@ -1,0 +1,55 @@
+.support-heading {
+    font-weight: bolder;
+    font-size: 50px;
+    color: #fc6100;
+}
+
+.support-table{
+    border: 1px solid black;
+    font-size: large;
+    color: #0000FF;
+}
+
+td{
+    text-align: center;
+ }
+
+.team-viewer{
+    display: inline-block;
+    float: left;
+    width: 5%;
+    height: 30px;
+    text-align: center;
+    alignment: center;
+    background: #fff;
+    border: 1px solid #C8C8C8;
+
+}
+
+.sub-heading{
+    display: block;
+    float: top;
+}
+
+.upc-image{
+    width: 90%;
+    height: auto;
+}
+
+@media (min-width: 0px) and (max-width: 750px) {
+    .product-entry-software{
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        margin-bottom: 40px;
+    }
+
+    .product-entry-pos{
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        margin-bottom: 40px;
+    }
+}

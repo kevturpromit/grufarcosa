@@ -1,0 +1,42 @@
+.nav-logo{
+    height: 50px;
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-home{
+    font-family: "Helvetica Neue";
+    font-weight: bold;
+    color: black;
+    font-size: large;
+}
+
+.nav-dropdown{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Helvetica Neue";
+    color: black;
+    font-size: large;
+}
+
+.dropdown-item a:hover {
+    color: black;
+}
+.dropdown-item{
+    margin: 10px;
+    font-family: "Helvetica Neue" !important;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.navbar{
+    margin-bottom: 0px !important;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: #5e5e5e;
+}

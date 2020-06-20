@@ -1,0 +1,12 @@
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+
+.row-text{
+    color: black;
+}
+
+.no-border{
+    border: none;
+}

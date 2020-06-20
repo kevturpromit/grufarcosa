@@ -1,0 +1,45 @@
+.reports-container{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.reports-heading{
+    font-weight: bolder;
+    font-size: 50px;
+    color: #fc6100;
+}
+
+.tbl-col{
+    padding: 5px;
+}
+.reports-entry{
+    display: inline-block;
+    float: left;
+    width: 40%;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+    padding: 2px;
+    background: #fff;
+    border: 1px solid #C8C8C8;
+}
+
+.reports-image{
+    height: 100px;
+    width: auto;
+}
+
+
+@media (min-width: 0px) and (max-width: 750px) {
+    .reports-entry{
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        margin-bottom: 40px;
+    }
+
+}

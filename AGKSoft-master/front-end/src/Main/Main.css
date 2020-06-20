@@ -1,0 +1,53 @@
+.main-container{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.main-heading{
+    font-weight: bolder;
+    font-size: 50px;
+    color: #fc6100;
+}
+
+.sub-heading{
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+
+#downloads {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#downloads td, #downloads th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#downloads tr:nth-child(even){background-color: #f2f2f2;}
+
+#downloads tr:hover {background-color: #ddd;}
+
+#downloads th {
+    margin-bottom: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #fcaf7f;
+    color: white;
+}
+
+@media (min-width: 0px) and (max-width: 750px) {
+    .main-container {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+
+
+ a:link.stub { color: #772233; } /* hovered links */

@@ -1,0 +1,68 @@
+.submit-btn {
+    font-size: 16px;
+    padding: 15px 50px;
+    color: white;
+    background-color: #fc6100;
+    border-style: none;
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+
+.input-boxes{
+    padding-left: 10px;
+    display: block;
+    float: left;
+    height: 40px;
+    width: 400px;
+    font-size: medium;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: grey;
+    border-width: medium;
+    margin-bottom: 20px;
+}
+
+.message-box{
+    height: 80px;
+}
+
+.table-one{
+    float: left;
+    width: 50%;
+}
+
+.table-two{
+    float: left;
+    width: 30%;
+    margin-left: 15%;
+    align-content: center;
+}
+
+.contact-text{
+    font-size: medium;
+    font-weight: bold;
+}
+
+.fax{
+    margin-top: 10px;
+}
+@media (min-width: 0px) and (max-width: 890px) {
+    .input-boxes{
+        width: 100%;
+        margin-right: 10px;
+    }
+    .table-two{
+        width: 100%;
+        margin-left: 0%;
+        align-content: left;
+        margin-bottom: 50px;
+    }
+
+    .table-one{
+        width: 100%;
+    }
+
+    .submit-btn{
+        margin-bottom: 20px;
+    }
+}

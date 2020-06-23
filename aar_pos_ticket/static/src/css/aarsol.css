@@ -1,0 +1,39 @@
+
+.pos .pos-sale-ticket {
+    text-align: left;
+    width: 365px;
+    background-color: white;
+    margin: 8px;
+    padding: 15px;
+    font-size: 12px !important;
+    padding-bottom:30px;
+    display: inline-block;
+    font-family: "Inconsolata";
+    border: solid 1px rgb(220,220,220);
+    border-radius: 3px;
+    overflow: hidden;
+}
+.pos .pos-sale-ticket .company_card {
+    border-bottom: 1px dashed; 
+    display: inline-block;
+}
+.pos .pos-sale-ticket .company_info {
+    width: 55%; 
+    float: left; 
+    padding: 20px 0px 6px;
+}
+.pos .pos-sale-ticket .company_info .company_name {
+    font-size: 22px; 
+    font-weight: bold;
+}
+.pos .pos-sale-ticket .company_logo {
+    width: 35%;
+    float: right;
+}
+
+.pos_underline{
+	text-decoration: underline;
+	padding-top: 10px;
+}
+
+

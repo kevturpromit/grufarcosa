@@ -1,0 +1,20 @@
+
+Version info:
+
+version 12.0.0.1 
+  - Improved index according to a new format.
+ 
+version 12.0.0.2
+  - patch applied (service product, product validation)
+
+version 12.0.0.3
+  - issue solved : not selecting customer and creating transfer
+
+version 12.0.0.4 (28/06/19)
+  - hide transfer button when unchecked in pos config.
+
+version 12.0.0.5 (20/02/20)
+		- Solve partner id issue.
+		- Add validation such that user can not select same source and destination location.
+		- Add validation to select all fields.
+		- Remove order after creation of transfer .

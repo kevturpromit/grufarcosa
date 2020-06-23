@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+    <template id="assets_backend_index" name="index pos ui" inherit_id="point_of_sale.index">
+        <xpath expr="//head" position="inside">           
+            <script type="text/javascript" src="/aar_pos_ticket/static/src/libs/js/jquery-barcode-last.min.js"/>            
+        </xpath>
+    </template>
+    
+    <template id="assets_backend" name="aar_pos_ticket assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/aar_pos_ticket/static/src/js/model.js"/>
+            <script type="text/javascript" src="/aar_pos_ticket/static/src/js/order.js"/>
+            <script type="text/javascript" src="/aar_pos_ticket/static/src/js/screens.js"/>
+            <link rel="stylesheet" href="/aar_pos_ticket/static/src/css/aarsol.css"/>
+        </xpath>
+    </template>
+</odoo>

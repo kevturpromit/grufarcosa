@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+<t t-extend="PosTicket">
+    <t t-jquery="div[class*='pos-sale-ticket']" t-operation="replace">
+    
+    <div class="pos-sale-ticket">        
+        <div class="company_card">
+			<div align="center" style="margin-top: 3px;"><img id="barcode" style="height: 100px;"/></div>
+            <div class="company_info">
+                <span  class="company_name"><t t-esc="widget.pos.config.name"/></span><br />
+				<strong>Terminal:</strong> <t t-esc="widget.pos.config.name || ''"/><br />					
+				<!--VAT: <t t-esc="widget.pos.company.vat || ''"/><br /> -->
+				<strong>Served By:</strong> <t t-esc="widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name"/>    
+            </div>
+            <div class="company_logo">
+               <img t-attf-src="data:image/*;base64,{{widget.pos.config.logo}}" style="width:100%;"/>
+
+            </div>                
+        </div>
+            
+        <div name="order_info">
+	        Date: <t t-esc="moment().format('L LT')"/> <br />                   
+	        Receipt: <t t-esc="order.name"/><br />       	            
+	        <t t-set="client" t-value="order.get_client()"/>
+			<t t-if="client and widget.pos.config.receipt_customer_vat">
+				<t t-set="client" t-value="order.get_client()"/>
+				Customer: <t t-esc="client['name']"/><br />
+				Phone (mobile): <t t-esc="client['phone'] || client['mobile'] || ''"/>						
+			</t> 			
+			<br />	
+		</div>
+			
+	    <t t-if="receipt.header">
+	        <div style='text-align:center'>
+	            <t t-esc="receipt.header" />
+	        </div>            
+	    </t>
+		
+		<table class='receipt-orderlines'>
+			<tr>
+				<th class="pos-left-align" width='70%' style="border-top: dotted 1px #000">ITEMS</th>
+				<th class="pos-right-align" width='13%' style="border-top: dotted 1px #000">QTY</th>
+				<th class="pos-right-align" width='17%' style="border-top: dotted 1px #000">PRICE</th>
+			</tr>  		
+			<tr t-foreach="orderlines" t-as="orderline">
+			    <td style="border-bottom: dotted 1px #000;padding-top:3px;">		        
+			        
+			        <div style="line-height: 1.1em;">
+						<t t-esc="orderline.get_product().display_name"/>   												    
+					</div>
+									        
+			        <div t-if="!orderline.get_discount() > 0">                                
+			            Price : <t t-esc='orderline.price - orderline.get_tax()' />                                
+			        </div>
+			        
+			        <div t-if="orderline.get_discount() > 0">                                
+			            Price : <span style="text-decoration: line-through;"><t t-esc='orderline.price - orderline.get_tax()' /></span> 
+			            	  <t t-esc='orderline.price - orderline.get_tax() - orderline.get_item_discout()' />		                    	   
+			            <div class="pos-disc-font">
+			                With a <t t-esc="orderline.get_discount()"/>% discount
+			            </div>
+			        </div>		       
+			    </td> <!-- Item Column -->
+			    
+			    <td class="pos-right-align" style="border-bottom: dotted 1px #000">
+			        <t t-esc="orderline.get_quantity_str_with_unit()"/>
+			    </td>
+			    <td class="pos-right-align" style="border-bottom: dotted 1px #000">
+			        <t t-esc="widget.format_currency_no_symbol(orderline.get_display_price())"/>
+			    </td>
+			</tr>
+		</table>
+	
+
+		<!-- Subtotal and Totals -->        
+		<table class='receipt-total'>
+			<tr><td>&#160;</td></tr>
+			<tr>
+				<td>Subtotal:</td>        
+				<td class="pos-right-align">
+				    <t t-esc="widget.format_currency(order.get_total_before_tax())"/>
+				</td>
+			</tr>
+				
+			<t t-foreach="order.get_tax_details()" t-as="taxdetail">
+				<tr>
+				    <td  style="border-bottom: dotted 1px #000"><t t-esc="taxdetail.name" /></td>
+				    <td class="pos-right-align"  style="border-bottom: dotted 1px #000">
+				        <t t-esc="widget.format_currency(taxdetail.amount)" />
+				    </td>
+				</tr>
+			</t>		
+					   
+			<tr class="emph">
+				<td  style="border-bottom: dotted 1px #000">Total:</td>
+				<td class="pos-right-align"  style="border-bottom: dotted 1px #000">
+				    <t t-esc="widget.format_currency(order.get_total_with_tax())"/>
+				</td>
+			</tr>		
+		</table>
+        
+		<br />
+		<table class='receipt-paymentlines'>
+			<t t-foreach="paymentlines" t-as="line">
+			  <tr>
+				  <td>
+				      <t t-esc="line.name"/>
+				  </td>
+				  <td class="pos-right-align">
+				      <t t-esc="widget.format_currency(line.get_amount())"/>
+				  </td>
+			  </tr>
+			</t>
+		</table>
+
+		<table class='receipt-change'>
+			<tr><td style="border-bottom: dotted 1px #000">Change:</td>
+				<td class="pos-right-align" style="border-bottom: dotted 1px #000">
+					<t t-esc="widget.format_currency(order.get_change())"/>
+				</td>
+			</tr>	
+		</table>
+				      
+		<t t-if="receipt.footer">
+			<br />
+			<div style='text-align:center'>
+				<t t-esc="receipt.footer" />
+			</div>
+		</t>
+		
+
+		
+       
+    </div>
+		<p style="page-break-before:always;"> </p>
+
+		<!--Second receipt-->
+
+		<div class="pos-sale-ticket">
+        <div class="company_card">
+			<div align="center" style="margin-top: 3px;"><img id="barcode" style="height: 100px;"/></div>
+            <div class="company_info">
+                <span  class="company_name"><t t-esc="widget.pos.config.name"/></span><br />
+				<strong>Terminal:</strong> <t t-esc="widget.pos.config.name || ''"/><br />
+				<!--VAT: <t t-esc="widget.pos.company.vat || ''"/><br /> -->
+				<strong>Served By:</strong> <t t-esc="widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name"/>
+            </div>
+            <div class="company_logo">
+               <img t-attf-src="data:image/*;base64,{{widget.pos.config.logo}}" style="width:100%;"/>
+
+            </div>
+        </div>
+
+        <div name="order_info">
+	        Date: <t t-esc="moment().format('L LT')"/> <br />
+	        Receipt: <t t-esc="order.name"/><br />
+	        <t t-set="client" t-value="order.get_client()"/>
+			<t t-if="client and widget.pos.config.receipt_customer_vat">
+				<t t-set="client" t-value="order.get_client()"/>
+				Customer: <t t-esc="client['name']"/><br />
+				Phone (mobile): <t t-esc="client['phone'] || client['mobile'] || ''"/>
+			</t>
+			<br />
+		</div>
+
+	    <t t-if="receipt.header">
+	        <div style='text-align:center'>
+	            <t t-esc="receipt.header" />
+	        </div>
+	    </t>
+
+
+		<br />
+
+
+
+		<t t-if="receipt.footer">
+			<br />
+			<div style='text-align:center'>
+				<t t-esc="receipt.footer" />
+			</div>
+		</t>
+
+
+
+
+    </div>
+
+
+    </t>
+    
+</t> 
+
+<t t-extend="Chrome">
+    <t t-jquery='.pos-logo' t-operation='replace'>        
+        <img class="pos-logo" src="/web/binary/company_logo" />                    
+    </t>
+</t>
+
+</templates>

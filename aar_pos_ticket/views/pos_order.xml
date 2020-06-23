@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ticket_view_pos_pos_form" model="ir.ui.view">
+            <field name="name">pos.order.ticket.form</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="ean13"/>
+                </xpath>
+                
+            </field>
+        </record>
+
+        <record id="ticket_view_pos_order_tree" model="ir.ui.view" >
+            <field name="name">pos.order.ticket.tree</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="ean13"/>                    
+                </xpath>
+                
+            </field>
+        </record>
+
+        <record id="pos_order_filter" model="ir.ui.view">
+            <field name="name">pos.order.ticket.select</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="ean13"/>                    
+                </xpath>
+            </field>
+        </record>
+
+        <record id="pos_config_logo" model="ir.ui.view">
+            <field name="name">pos.config.logo</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="after">
+                    <field name="logo" widget="image" class="oe_avatar"/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>
+

@@ -1,0 +1,91 @@
+<odoo>
+    <data>
+        <record id="paperformat_product_label" model="report.paperformat">
+            <field name="name">Product Label Paper Format</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">57</field>
+            <field name="page_width">40</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="product.report_product_template_label" model="ir.actions.report">
+            <field name="paperformat_id" ref="custom_product_label_report.paperformat_product_label"/>
+        </record>
+
+        <record id="product.report_product_label" model="ir.actions.report">
+            <field name="paperformat_id" ref="custom_product_label_report.paperformat_product_label"/>
+        </record>
+
+
+        <template id="report_simple_label_custom">
+
+            <table style="border-spacing:0;margin-bottom:0px;width:100%;" class="table table-sultan" >
+                <tr>
+                    <td colspan="3" style="text-align: center;border: 2px solid black;">
+                        <span style="font-size: 100%;" t-field="product.name"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <img t-if="product.barcode"
+                             t-att-src="'/report/barcode?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', product.barcode, 600, 150)"
+                             style="width:100%;height:28%;"/>
+                        <span t-field="product.barcode"/>
+                    </td>
+                    <td rowspan="2" style="text-align: center;">
+                        <img style="width:100px;" src="/custom_product_label_report/static/src/img/logo.jpg"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span t-esc="product._get_color()"/>
+                    </td>
+                    <td>
+                        <span t-esc="product._get_size()"/>
+                    </td>
+                </tr>
+                <!--<tr>-->
+                <!--<td style="border: 2px solid white;padding-top:0px;padding-bottom:0px;">-->
+                <!--<t t-if="product.default_code">-->
+                <!--[<small style="font-size: 100%;" t-field="product.default_code"/>]-->
+                <!--</t>-->
+                <!--<small style="font-size: 100%;" t-field="product.name"/>-->
+                <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                <!--<td style="text-align: center; vertical-align: middle;padding-top:0px;padding-bottom:0px;padding-left: 0px;padding-right: 0px;">-->
+                <!--<img t-if="product.barcode"-->
+                <!--t-att-src="'/report/barcode?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('UPCA', product.barcode, 600, 150)"-->
+                <!--style="width:100%;height:28%;"/>-->
+                <!--<span t-field="product.barcode"/>-->
+                <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                <!--<td style="text-align: center;border: 2px solid white;padding-top:0px;padding-bottom:0px">-->
+                <!--<span style="margin-top: 0px;margin-bottom: 0px;">-->
+                <!--<strong t-field="product.company_id.currency_id.symbol"/>-->
+                <!--<strong t-field="product.list_price"/>-->
+                <!--</span>-->
+                <!--</td>-->
+                <!--</tr>-->
+            </table>
+
+        </template>
+
+        <template id="report_producttemplatelabel_inherit" inherit_id="product.report_productlabel">
+            <xpath expr="//t[@t-call='product.report_simple_label']" position="replace">
+                <t t-call="custom_product_label_report.report_simple_label_custom">
+                    <t t-set="product" t-value="product"/>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>

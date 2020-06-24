@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <templates id="bi_pos_stock_template" inherit_id="point_of_sale.template" xml:space="preserve">
+
+
+ 	 <!-- Product Widget -->
+		<t t-extend="Product">
+			<t t-jquery=".product-img" t-operation="append">
+				
+				<!-- Display Stock in POS -->
+		    	<t t-if="widget.pos.config.pos_display_stock">
+		    		
+		    		<!-- If Stock Type is Qty on hand -->
+		    		<t t-if="widget.pos.config.pos_stock_type == 'onhand'">
+						<span class="price-tag" id="stockqty" style="right: 95px;">
+						    <t t-esc="product.qty_available"/>
+						</span>
+					</t>
+					
+					<!-- If Stock Type is Incoming Qty -->
+					<t t-if="widget.pos.config.pos_stock_type == 'incoming'">
+						<span class="price-tag" style="right: 95px;">
+						    <t t-esc="product.incoming_qty"/>
+						</span>
+					</t>
+					
+					<!-- If Stock Type is Outgoing Qty -->
+					<t t-if="widget.pos.config.pos_stock_type == 'outgoing'">
+						<span class="price-tag" style="right: 95px;">
+						    <t t-esc="product.outgoing_qty"/>
+						</span>
+					</t>
+					
+					<!-- If Stock Type is Qty Available -->
+					<t t-if="widget.pos.config.pos_stock_type == 'available'">
+						<span class="price-tag" id="stockqty" style="right: 95px;">
+						    <t t-set="qty_avail" t-value="product.qty_available - product.outgoing_qty + product.incoming_qty"/>
+						    <t t-esc="qty_avail"/>
+						</span>
+					</t>
+					
+				</t>
+			</t>
+		</t> 
+    
+  	</templates>
+  	
+  	

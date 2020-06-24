@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--Custom POS Config View-->  
+            
+
+       <record model="ir.ui.view" id="custom_pos_config_extended_form_view">
+            <field name="name">pos.config.form.extended.view</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+				<field name="picking_type_id" position="after">
+
+						<group string="Stock Configuration in POS">
+							<field name="pos_display_stock"/>
+							<field name="pos_stock_type"/>
+							<field name="pos_allow_order"/>
+							<field name="pos_deny_order"/>
+						</group>
+
+						<group string="Stock Location Configuration">
+							<field name="show_stock_location" widget="radio"/>
+						</group>
+
+				</field>
+           </field>
+       </record>
+        
+        
+    </data>
+</odoo>        

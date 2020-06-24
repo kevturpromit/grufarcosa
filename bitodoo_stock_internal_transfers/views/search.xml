@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_pickingtype_filter_inherit" model="ir.ui.view">
+            <field name="name">Filter picking type</field>
+            <field name="model">stock.picking.type</field>
+            <field name="inherit_id" ref="stock.view_pickingtype_filter"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <filter name="filter_my_location" string="Ubicaciones Internas" domain="[('code','=','internal')]" />
+                </field>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="stock.stock_picking_type_action">
+            <field name="context">
+                {'search_default_filter_my_location': True}
+            </field>
+        </record>
+    </data>
+</odoo>

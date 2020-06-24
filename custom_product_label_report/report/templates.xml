@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_common" name="custom report assets" inherit_id="web.report_assets_common">
+            <xpath expr="." position="inside">
+                <link href="/custom_product_label_report/static/src/css/style.less" rel="stylesheet"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

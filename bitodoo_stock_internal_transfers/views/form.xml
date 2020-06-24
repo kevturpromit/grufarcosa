@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_picking_form" model="ir.ui.view">
+            <field name="name">stock picking</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <field name="picking_type_id" position="replace">
+                </field>
+                <field name="location_id" position="after">
+                    <field name="picking_type_id" string="Ubicación destino"/>
+                </field>
+                <field name="partner_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <button name="action_confirm" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </button>
+                <button name="action_assign" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </button>
+                <button name="do_unreserve" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </button>
+                <field name="picking_type_id" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
+                </field>
+                <field name="location_id" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
+                </field>
+                <field name="location_dest_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

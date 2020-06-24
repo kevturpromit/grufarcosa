@@ -1,0 +1,12 @@
+<odoo>
+  <data>
+    <report id="action_stock_picking_label_custom"
+                string="Product Labels"
+                model="stock.picking"
+                report_type="qweb-pdf"
+                file="custom_stock_picking_label.templates"
+                name="custom_stock_picking_label.stock_picking_labels_custom"
+                attachment_use="False"
+        />
+  </data>
+</odoo>
